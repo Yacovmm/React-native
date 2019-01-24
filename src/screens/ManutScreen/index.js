@@ -35,6 +35,7 @@ class ManutScreen extends React.Component{
     }
 
 }
+
 const styles = StyleSheet.create({
     textAreaContainer: {
       borderColor: COLORS.grey20,
