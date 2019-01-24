@@ -1,19 +1,23 @@
-import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Button } from 'react-native';
 // import {createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator} from 'react-navigation';
-import {MainScreen} from "./screens"
+import { MainScreen } from "./screens"
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 
-// Estrutura de Navegação
-// - Stack
-// --- Tabs
-// ------ Inicial
-// ------ Icons
-// ------ Maps
-// ------ Camera
-// --- Stack1
+const Navegador = createStackNavigator({
+    MainScreen: {
+        screen: MainScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
 
-// Configurando Stack Navigator
+});
+
+const AppContainer = createAppContainer(Navegador);
+export default AppContainer;
+
 
 // const stackNavigationConfig = {
 //     "Main": {
@@ -36,4 +40,4 @@ import {MainScreen} from "./screens"
 
 // export default createAppContainer(StackNavigator);
 
-export default MainScreen
+// export default MainScreen
