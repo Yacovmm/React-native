@@ -5,19 +5,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 
-
-
 const viewPadding = 10;
 class teste1 extends Component {
-    state = {
-        tasks: [],
-        text: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            tasks: [],
+            text: ""
+        }
+
     };
 
-    static navigationOptions = {
-        title: 'Adicione suas tarefas!',
+    // static navigationOptions = {
+    //     title: 'Adicione suas tarefas!',
 
-    };
+    // };
 
     changeTextHandler = text => {
         this.setState({ text: text });
@@ -57,7 +59,7 @@ class teste1 extends Component {
                 >
 
                 </TextInput>
-                <TouchableOpacity style={styles.text}>
+                <TouchableOpacity style={styles.text} onPress={() => props.action.addItem(this.state)}>
                     <Icon size={50} name="tasks"></Icon>
                 </TouchableOpacity>
             </View>

@@ -6,8 +6,8 @@ class ManutScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titulo = "casa",
-      descricao= "casa"
+      titulo = "",
+      descricao= ""
     }
   }
 

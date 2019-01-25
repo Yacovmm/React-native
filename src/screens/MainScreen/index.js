@@ -19,20 +19,24 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 const viewPadding = 10;
 
 class MainScreen extends Component {
-  state = {
-    tasks: [],
-    text: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [],
+      text: ""
+    }
+
   };
 
-  static navigationOptions = {
-    title: 'Todo List',
+  // static navigationOptions = {
+  //   title: 'Todo List',
+  // };
 
-  };
+
 
   changeTextHandler = text => {
     this.setState({ text: text });
   };
-
 
   addTask = () => {
     let notEmpty = this.state.text.trim().length > 0;
@@ -93,7 +97,7 @@ class MainScreen extends Component {
           returnKeyLabel="done"
         />
 
-        
+
         <ActionButton buttonColor="rgba(231,76,60,1)">
           <ActionButton.Item buttonColor='#9b59b6' title="Add Todo" onPress={() => this.props.navigation.navigate('teste1')}>
             <Icon name="md-create" style={styles.actionButtonIcon} />

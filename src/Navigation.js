@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
-// import {createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator} from 'react-navigation';
 import { MainScreen } from "./screens"
-import teste1 from "./screens/teste1.js"
+import teste1 from "./screens/ManutScreen/teste1.js"
 import { ManutScreen } from "./screens"
 import { createAppContainer, createStackNavigator } from 'react-navigation';
+import Provider, { withStorageAndAction } from "./screens/ManutScreen/provider";
 
 
 const Navegador = createStackNavigator({
     MainScreen: {
-        screen: MainScreen,
-        // navigationOptions: {
-        //     // header: null         
-
-        // }
+        screen: withStorageAndAction(MainScreen),
+        navigationOptions: {
+            title: 'Todo List',
+        }
     },
     teste1: {
-        screen: teste1
+        screen: withStorageAndAction(teste1),
+        navigationOptions: {
+            title: 'Adicione suas tarefas!',
+        }
     },
     // ManutScreen: {
     //     screen: ManutScreen
