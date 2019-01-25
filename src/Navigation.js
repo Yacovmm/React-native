@@ -2,16 +2,25 @@ import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 // import {createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator} from 'react-navigation';
 import { MainScreen } from "./screens"
+import teste1 from "./screens/teste1.js"
+import { ManutScreen } from "./screens"
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 
 const Navegador = createStackNavigator({
     MainScreen: {
         screen: MainScreen,
-        navigationOptions: {
-            header: null
-        }
+        // navigationOptions: {
+        //     // header: null         
+
+        // }
     },
+    teste1: {
+        screen: teste1
+    },
+    // ManutScreen: {
+    //     screen: ManutScreen
+    // }
 
 });
 

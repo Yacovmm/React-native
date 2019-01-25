@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -13,6 +12,8 @@ import {
 } from "react-native";
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+
 
 
 const viewPadding = 10;
@@ -21,6 +22,11 @@ class MainScreen extends Component {
   state = {
     tasks: [],
     text: ""
+  };
+
+  static navigationOptions = {
+    title: 'Todo List',
+
   };
 
   changeTextHandler = text => {
@@ -86,15 +92,15 @@ class MainScreen extends Component {
           returnKeyType="done"
           returnKeyLabel="done"
         />
+
         
-        {/* Rest of the app comes ABOVE the action button component ! */}
         <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="Add Todo" >
+          <ActionButton.Item buttonColor='#9b59b6' title="Add Todo" onPress={() => this.props.navigation.navigate('teste1')}>
             <Icon name="md-create" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          
+
         </ActionButton>
-      
+
       </View>
     );
   }

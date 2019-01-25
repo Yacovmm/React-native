@@ -1,4 +1,6 @@
 import MainScreen from "./MainScreen"
+// import ManutScreen from "./ManutScreen"
 
 
-export {MainScreen}
+export { MainScreen }
+// export { ManutScreen }
