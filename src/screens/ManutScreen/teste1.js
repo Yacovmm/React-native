@@ -59,7 +59,7 @@ class teste1 extends Component {
                 >
 
                 </TextInput>
-                <TouchableOpacity style={styles.text} onPress={() => props.action.addItem(this.state)}>
+                <TouchableOpacity style={styles.text} onPress={() => this.props.navigation.navigate('MainScreen', { tasks: this.state.tasks })}>
                     <Icon size={50} name="tasks"></Icon>
                 </TouchableOpacity>
             </View>

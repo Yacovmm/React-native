@@ -19,6 +19,9 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 const viewPadding = 10;
 
 class MainScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+
+  }) //Como pegar o state task do teste1 e jogar aqui?
   constructor(props) {
     super(props);
     this.state = {
@@ -28,9 +31,7 @@ class MainScreen extends Component {
 
   };
 
-  // static navigationOptions = {
-  //   title: 'Todo List',
-  // };
+
 
 
 
