@@ -20,54 +20,54 @@ const viewPadding = 10;
 
 class MainScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-
+  //this.props.storage.tasks
   }) //Como pegar o state task do teste1 e jogar aqui?
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      // tasks: [],
       text: ""
     }
 
   };
 
-
-
-
-
   changeTextHandler = text => {
     this.setState({ text: text });
   };
 
-  addTask = () => {
-    let notEmpty = this.state.text.trim().length > 0;
+  // addTask = () => {
+  //   let notEmpty = this.state.text.trim().length > 0;
 
-    if (notEmpty) {
-      this.setState(
-        prevState => {
-          let { tasks, text } = prevState;
-          return {
-            tasks: tasks.concat({ key: tasks.length, text: text }),
-            text: ""
-          };
-        },
-        () => Tasks.save(this.state.tasks)
-      );
-    }
-  };
+  //   if (notEmpty) {
+  //     this.setState(
+  //       prevState => {
+  //         let { tasks, text } = prevState;
+  //         return {
+  //           tasks: tasks.concat({ key: tasks.length, text: text }),
+  //           text: ""
+  //         };
+  //       },
+  //       () => Tasks.save(this.state.tasks)
+  //     );
+  //   }
+  // };
 
-  deleteTask = i => {
-    this.setState(
-      prevState => {
-        let tasks = prevState.tasks.slice();
+  // deleteTask = i => {
+  //   this.setState(
+  //     prevState => {
+  //       let tasks = prevState.tasks.slice();
 
-        tasks.splice(i, 1);
+  //       tasks.splice(i, 1);
 
-        return { tasks: tasks };
-      },
-      () => Tasks.save(this.state.tasks)
-    );
-  };
+  //       return { tasks: tasks };
+  //     },
+  //     () => Tasks.save(this.state.tasks)
+  //   );
+  // };
+
+  // componentDidMount() {
+  //   Tasks.all(tasks => this.setState({ tasks: tasks || [] }));
+  // }
 
   render() {
     return (
@@ -76,14 +76,16 @@ class MainScreen extends Component {
       >
         <FlatList
           style={styles.list}
-          data={this.state.tasks}
+          data={this.props.storage.tasks}
+          keyExtractor={(item, index) => index.toFixed(0)}
           renderItem={({ item, index }) =>
-            <View>
+            <View
+            key={index.toFixed(0)}>
               <View style={styles.listItemCont}>
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
-                <Button title="X" onPress={() => this.deleteTask(index)} />
+                <Button title="X" onPress={() => this.props.action.deleteTask(index)} />
               </View>
               <View style={styles.hr} />
             </View>}
@@ -93,7 +95,7 @@ class MainScreen extends Component {
           onChangeText={this.changeTextHandler}
           onSubmitEditing={this.addTask}
           value={this.state.text}
-          placeholder="Add Tasks"
+          placeholder="O que você tem em mente?"
           returnKeyType="done"
           returnKeyLabel="done"
         />
@@ -111,24 +113,24 @@ class MainScreen extends Component {
   }
 }
 
-let Tasks = {
-  convertToArrayOfObject(tasks, callback) {
-    return callback(
-      tasks ? tasks.split("||").map((task, i) => ({ key: i, text: task })) : []
-    );
-  },
-  convertToStringWithSeparators(tasks) {
-    return tasks.map(task => task.text).join("||");
-  },
-  all(callback) {
-    return AsyncStorage.getItem("TASKS", (err, tasks) =>
-      this.convertToArrayOfObject(tasks, callback)
-    );
-  },
-  save(tasks) {
-    AsyncStorage.setItem("TASKS", this.convertToStringWithSeparators(tasks));
-  }
-};
+// let Tasks = {
+//   convertToArrayOfObject(tasks, callback) {
+//     return callback(
+//       tasks ? tasks.split("||").map((task, i) => ({ key: i, text: task })) : []
+//     );
+//   },
+//   convertToStringWithSeparators(tasks) {
+//     return tasks.map(task => task.text).join("||");
+//   },
+//   all(callback) {
+//     return AsyncStorage.getItem("TASKS", (err, tasks) =>
+//       this.convertToArrayOfObject(tasks, callback)
+//     );
+//   },
+//   save(tasks) {
+//     AsyncStorage.setItem("TASKS", this.convertToStringWithSeparators(tasks));
+//   }
+// };
 
 const styles = StyleSheet.create({
   container: {
